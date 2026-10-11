@@ -10,17 +10,23 @@ class BinarySearch : public SearchingAlgorithm {
 
         int search(vector<int>& v, int x) override {
             sort(v.begin(), v.end());
-            int n = v.size();
-            for (size_t i = 0; i < n; i++) {
-                if (v[i] <= v[n]) return i;
-                if (v[i] < v[n/2]) {
-                    n = n/2;
+
+            int l = 0;
+            int r = v.size() - 1;
+            while (l <= r) {
+                int m = l + (r - l) / 2;
+                if (v[m] == x) {
+                    return m;
+                }
+
+                if (v[m] < x) {
+                    l = m + 1;
                 } else {
-                    n = n + n/2;
+                    r = m - 1;
                 }
             }
             return -1;
-        };
+        }
 };
 
 
