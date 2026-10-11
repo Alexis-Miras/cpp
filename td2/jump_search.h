@@ -44,7 +44,7 @@ public:
             res = n;
         }
 
-        for (int i = prev; i <= res; ++i) {
+        for (int i = prev; i < res; ++i) {
             numberComparisons++;
             totalComparisons++;
             if (sorted[i] == x) return i;
