@@ -3,31 +3,39 @@
 
 #include "searching_algorithm.h"
 
+using namespace std;
+
 class BinarySearch : public SearchingAlgorithm {
-    public:
-        BinarySearch();
-        virtual ~BinarySearch() = default;
+public:
+    BinarySearch() = default;
+    ~BinarySearch() override = default;
 
-        int search(vector<int>& v, int x) override {
-            sort(v.begin(), v.end());
+    int search(vector<int>& v, int x) override {
+        numberComparisons = 0;
+        vector<int> sorted = v;
+        sort(sorted.begin(), sorted.end());
 
-            int l = 0;
-            int r = v.size() - 1;
-            while (l <= r) {
-                int m = l + (r - l) / 2;
-                if (v[m] == x) {
-                    return m;
-                }
+        int left = 0;
+        int right = sorted.size() - 1;
 
-                if (v[m] < x) {
-                    l = m + 1;
-                } else {
-                    r = m - 1;
-                }
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            numberComparisons++;
+            totalComparisons++;
+
+            if (sorted[mid] == x) {
+                return mid;
             }
-            return -1;
-        }
-};
 
+            if (sorted[mid] < x) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+};
 
 #endif
