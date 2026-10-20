@@ -1,26 +1,20 @@
 #ifndef MATRIXNUMERICAL_H
 #define MATRIXNUMERICAL_H
 
+#include "matrix_base.h"
 #include <vector>
 
 using namespace std;
 
-class MatrixNumerical {
-    private:
-        vector<vector<int>> data;
-        size_t rows, cols;
-
+template <typename T>
+class MatrixNumerical : public MatrixBase<T> {
     public:
         MatrixNumerical();
-        MatrixNumerical(size_t n);
-        MatrixNumerical(size_t r, size_t c);
-        virtual ~MatrixNumerical() = default;
+        MatrixNumerical(size_t n, T type = T());
+        MatrixNumerical(size_t r, size_t c, T type = T());
+        MatrixNumerical(const MatrixBase<T>& base);
 
-        int getElement() const;
-        void addElement() const;
-        int getCols() const;
-        int getRows() const;
-        void display();
+        T getDeterminant() const; 
 
 };
 
