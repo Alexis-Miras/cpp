@@ -7,8 +7,8 @@ using namespace std;
 
 class BinarySearch : public SearchingAlgorithm {
 public:
-    BinarySearch() = default;
-    ~BinarySearch() override = default;
+    BinarySearch();
+    virtual ~BinarySearch() override = default;
 
     int search(vector<int>& v, int x) override {
         numberComparisons = 0;

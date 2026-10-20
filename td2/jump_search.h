@@ -11,8 +11,8 @@ using namespace std;
 
 class JumpSearch : public SearchingAlgorithm {
 public:
-    JumpSearch() = default;
-    ~JumpSearch() override = default;
+    JumpSearch();
+    virtual ~JumpSearch() override = default;
 
     int search(vector<int>& v, int x) override {
         numberComparisons = 0;
