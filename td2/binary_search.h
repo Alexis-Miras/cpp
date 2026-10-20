@@ -1,13 +1,15 @@
 #ifndef BINARYSEARCH_H
 #define BINARYSEARCH_H
 
+#include <algorithm>
+
 #include "searching_algorithm.h"
 
 using namespace std;
 
 class BinarySearch : public SearchingAlgorithm {
 public:
-    BinarySearch();
+    BinarySearch() = default;
     virtual ~BinarySearch() override = default;
 
     int search(vector<int>& v, int x) override {

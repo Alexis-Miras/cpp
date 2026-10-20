@@ -6,7 +6,7 @@
 
 class LinearSearch : public SearchingAlgorithm {
 public:
-    LinearSearch();
+    LinearSearch() = default;
     virtual ~LinearSearch() override = default;
 
     int search(vector<int>& v, int x) override {

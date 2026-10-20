@@ -1,40 +1,57 @@
 #include "matrix_base.h"
 #include <iostream>
 
-MatrixBase::MatrixBase():
+template <typename T>
+MatrixBase<T>::MatrixBase():
 rows(0),
 cols(0)
 {
 }
 
-MatrixBase::MatrixBase(size_t n):
+template <typename T>
+MatrixBase<T>::MatrixBase(size_t n, T type):
 rows(n),
-cols(n)
+cols(n),
+data(rows, vector<T>(cols, type))
 {
 }
 
-MatrixBase::MatrixBase(size_t r, size_t c):
+template <typename T>
+MatrixBase<T>::MatrixBase(size_t r, size_t c, T type):
 rows(r),
-cols(c)
+cols(c),
+data(r, vector<T>(c, type))
 {
 }
 
-
-void MatrixBase::display() {
-    cout << "test" << endl;
+template <typename T>
+void MatrixBase<T>::display() const {
+    for (size_t i = 0; i < rows; ++i) {
+        for (size_t j = 0; j < cols; ++j) {
+            cout << data[i][j] << "\t";
+        }
+        cout << endl;
+    }
 }
 
-int MatrixBase::getElement() const {
-    return 0
+template <typename T>
+T MatrixBase<T>::getElement(size_t r, size_t c) const {
+    if (r >= rows || c >= cols) throw std::out_of_range("Indices hors limites.");
+    return data[r][c];
 }
 
-void MatrixBase::addElement() {
-
+template <typename T>
+void MatrixBase<T>::addElement(size_t r, size_t c, const T& value) {
+    if (r >= rows || c >= cols) throw std::out_of_range("Indices hors limites.");
+    data[r][c] = value;
 }
 
-size_t MatrixBase::getCols() const {
+template <typename T>
+size_t MatrixBase<T>::getCols() const {
     return cols;
 }
-size_t MatrixBase::getRows() const {
+
+template <typename T>
+size_t MatrixBase<T>::getRows() const {
     return rows;
 }

@@ -4,7 +4,7 @@
 #include "binary_search.h"
 #include "jump_search.h"
 #include "linear_search.h"
-#include <algorithm>
+#include "matrix_base.h"
 
 using namespace std;
 
@@ -26,6 +26,19 @@ int main() {
     jumpSearch.displaySearchResults(cout, jump_result, 7);
     cout << "Linear search index: " << linear_result << endl;
     linearSearch.displaySearchResults(cout, linear_result, 7);
+
+    MatrixBase<int> matrix(3, 3, 5);
+
+    int val = 1;
+    for (size_t i = 0; i < matrix.getRows(); ++i) {
+        for (size_t j = 0; j < matrix.getCols(); ++j) {
+            matrix.addElement(i, j, val++);
+        }
+    }
+
+    cout << "Matrix : " << matrix.getRows() << " lignes, " << matrix.getCols() << " colonnes." << endl;
+
+    matrix.display();
 
     return 0;
 }
